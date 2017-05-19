@@ -1,0 +1,11 @@
+{
+  "name": "autoreg_thunet",
+  "version": "1.0.0",
+  "description": "automaticly register network in Tsinghua",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "nogeek",
+  "license": "ISC"
+}
