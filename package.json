@@ -1,11 +1,20 @@
 {
-  "name": "autoreg_thunet",
+  "name": "thunet-reg",
   "version": "1.0.0",
-  "description": "automaticly register network in Tsinghua",
+  "description": "register network in Tsinghua",
+  "bin": "./bin/thunet-reg.js",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "author": "nogeek",
-  "license": "ISC"
+  "license": "GPLv2",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
 }
