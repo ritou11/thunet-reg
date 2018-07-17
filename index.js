@@ -92,11 +92,33 @@ module.exports = yargRoot
   .command('logout', 'Logout my current IP', () => {}, (argv) => {
     const config = readConfig(argv);
     const ck = checkConfig(config);
-    if (ck) {
+    if (ck === 'No Username') {
       console.error(ck);
       return;
     }
     thunetReg.logout().then(
+      ({ data }) => { console.log(data); },
+    );
+  })
+  .command('auth', 'Register current IP with auth4', () => {}, (argv) => {
+    const config = readConfig(argv);
+    const ck = checkConfig(config);
+    if (ck) {
+      console.error(ck);
+      return;
+    }
+    thunetReg.auth4(config.username, config.password).then(
+      ({ data }) => { console.log(data); },
+    );
+  })
+  .command('unauth', 'Unregister current IP with auth4', () => {}, (argv) => {
+    const config = readConfig(argv);
+    const ck = checkConfig(config);
+    if (ck === 'No Username') {
+      console.error(ck);
+      return;
+    }
+    thunetReg.unauth4().then(
       ({ data }) => { console.log(data); },
     );
   })
