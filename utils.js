@@ -1,7 +1,8 @@
 const _ = require('lodash');
+const Hashes = require('jshashes');
 const ifaces = require('os').networkInterfaces();
 
-module.exports = (ifname) => {
+exports.getIp = (ifname) => {
   const ips = [];
   _.forEach(ifaces[ifname], (iface) => {
     if (iface.family !== 'IPv4' || iface.internal !== false) {
@@ -12,3 +13,5 @@ module.exports = (ifname) => {
   });
   return ips;
 };
+
+exports.getMd5 = (pwd) => new Hashes.MD5().hex(pwd);

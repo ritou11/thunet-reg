@@ -8,6 +8,12 @@
     "start": "node index.js"
   },
   "author": "nogeek",
+  "maintainers": [
+    {
+      "name": "Haotian Liu",
+      "email": "ritou11@gmail.com"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "eslint": "^4.19.1",
@@ -16,7 +22,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "fs": "^0.0.1-security",
     "interval-promise": "^1.2.0",
+    "jshashes": "^1.0.7",
     "lodash": "^4.17.10",
     "os": "^0.1.1",
     "path": "^0.12.7",
