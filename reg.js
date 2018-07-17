@@ -23,6 +23,29 @@ class ThunetReg {
     );
   }
 
+  async login(username, md5pwd) {
+    return this.axios.get(
+      '/do_login.php', {
+        params: {
+          action: 'login',
+          username,
+          password: `{MD5_HEX}${md5pwd}`,
+          ac_id: 1,
+        },
+      },
+    );
+  }
+
+  async logout() {
+    return this.axios.get(
+      '/do_login.php', {
+        params: {
+          action: 'logout',
+        },
+      },
+    );
+  }
+
   async loopReg(username, md5pwd, ip, interval) {
     console.log(`Started, interval time = ${interval}s`);
     loopInterval(

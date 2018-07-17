@@ -13,7 +13,7 @@ const readConfig = ({ configFile, username, password, md5Password, net, ip }) =>
   try {
     config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
   } catch (e) { config = {}; }
-  const inputConfig = { username, password, md5Password, net };
+  const inputConfig = { username, password, md5Password, net, ip };
   _.forEach(inputConfig, (value, key) => { config[key] = value || config[key]; });
   if (ip) config.ip = ip;
   else if (config.net) {
@@ -29,7 +29,6 @@ const readConfig = ({ configFile, username, password, md5Password, net, ip }) =>
 const checkConfig = (config) => {
   if (!config.username) return 'No Username';
   if (!config.md5Password) return 'No Password';
-  if (!config.ip) return 'No IP';
   return false;
 };
 
@@ -60,7 +59,7 @@ module.exports = yargRoot
     describe: 'Network of your computer, e.g. en0, eth0, ...',
     type: 'string',
   })
-  .command(['reg [<ip>]', '$0'], 'Register the IP',
+  .command('reg [<ip>]', 'Register the IP',
     (yargs) => {
       yargs
         .positional('ip', {
@@ -79,5 +78,27 @@ module.exports = yargRoot
         ({ data }) => { console.log(data); },
       );
     })
+  .command('login', 'Login my current IP', () => {}, (argv) => {
+    const config = readConfig(argv);
+    const ck = checkConfig(config);
+    if (ck) {
+      console.error(ck);
+      return;
+    }
+    thunetReg.login(config.username, config.md5Password).then(
+      ({ data }) => { console.log(data); },
+    );
+  })
+  .command('logout', 'Logout my current IP', () => {}, (argv) => {
+    const config = readConfig(argv);
+    const ck = checkConfig(config);
+    if (ck) {
+      console.error(ck);
+      return;
+    }
+    thunetReg.logout().then(
+      ({ data }) => { console.log(data); },
+    );
+  })
   .help()
   .parse;
