@@ -1,8 +1,13 @@
 # 清华校园网定时连接工具
 
-Author: Nogeek
+[![npm](https://img.shields.io/npm/v/@ritou11/thunet-reg.svg?style=flat-square)](https://www.npmjs.com/package/@b1f6c1c4/thunet-reg)
+[![npm](https://img.shields.io/npm/dt/@ritou11/thunet-reg.svg?style=flat-square)](https://www.npmjs.com/package/@ritou11/thunet-reg)
+[![GitHub last commit](https://img.shields.io/github/last-commit/ritou11/thunet-reg.svg?style=flat-square)](https://github.com/ritou11/thunet-reg)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ritou11/thunet-reg.svg?style=flat-square)](https://github.com/ritou11/thunet-reg)
+[![license](https://img.shields.io/github/license/ritou11/thunet-reg.svg?style=flat-square)](https://github.com/ritou11/thunet-reg/blob/master/LICENSE.md)
 
-Email: ritou11@gmail.com
+> Author: Nogeek
+> Email: ritou11@gmail.com
 
 ## 使用方法
 
