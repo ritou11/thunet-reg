@@ -51,13 +51,14 @@ class ThunetReg {
   async auth4(username, password, ip = '') {
     const token = await this.getToken(username, ip);
     const { hmd5, info, chksum } = hashAuth(username, password, ip, token);
-    return this.axios.post('/cgi-bin/srun_portal', {
+    return this.auth4Axios.post('/cgi-bin/srun_portal', {
       action: 'login',
       username,
       password: `{MD5}${hmd5}`,
       ac_id: 1,
       type: 1,
       n: 200,
+      double_stack: '1',
       ip,
       info,
       chksum,
@@ -65,7 +66,7 @@ class ThunetReg {
   }
 
   async unauth4(username, password, ip = '') {
-    return this.axios.post('/cgi-bin/srun_portal', {
+    return this.auth4Axios.post('/cgi-bin/srun_portal', {
       action: 'logout',
       username,
       user_ip: ip,

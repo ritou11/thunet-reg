@@ -107,7 +107,7 @@ module.exports = yargRoot
       console.error(ck);
       return;
     }
-    thunetReg.auth4(config.username, config.password).then(
+    thunetReg.auth4(config.username, config.password, config.ip).then(
       ({ data }) => { console.log(data); },
     );
   })
@@ -120,7 +120,7 @@ module.exports = yargRoot
     }
     thunetReg.unauth4().then(
       ({ data }) => { console.log(data); },
-    );
+    ).catch(() => { console.log('Logout.'); });
   })
   .help()
   .parse;
