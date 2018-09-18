@@ -32,6 +32,15 @@ const checkConfig = (config) => {
   return false;
 };
 
+const tryLogin = (config) => {
+  thunetReg.login(config.username, config.md5Password).then(
+    ({ data }) => { console.log(data); return true; },
+  ).catch(() => {
+    console.log('Network error! Try again...');
+    setTimeout(() => tryLogin(config), 1000);
+  });
+};
+
 module.exports = yargRoot
   .option('c', {
     alias: 'config-file',
@@ -85,9 +94,7 @@ module.exports = yargRoot
       console.error(ck);
       return;
     }
-    thunetReg.login(config.username, config.md5Password).then(
-      ({ data }) => { console.log(data); },
-    );
+    tryLogin(config);
   })
   .command('logout', 'Logout my current IP', () => {}, (argv) => {
     const config = readConfig(argv);
