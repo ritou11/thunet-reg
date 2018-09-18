@@ -1,6 +1,6 @@
 {
   "name": "@ritou11/thunet-reg",
-  "version": "0.2.0-rc.2",
+  "version": "0.2.0-rc.3",
   "description": "register network in Tsinghua",
   "bin": "./bin/thunet-reg.js",
   "main": "index.js",
