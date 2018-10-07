@@ -34,7 +34,7 @@ const checkConfig = (config) => {
 
 const tryLogin = (config) => {
   thunetReg.login(config.username, config.md5Password).then(
-    ({ data }) => { console.log(data); return true; },
+    ({ data }) => { console.log(data); },
   ).catch(() => {
     console.log('Network error! Try again...');
     setTimeout(() => tryLogin(config), 1000);
@@ -129,5 +129,25 @@ module.exports = yargRoot
       ({ data }) => { console.log(data); },
     ).catch(() => { console.log('Logout.'); });
   })
+  .command('keeplogin [<delay>]', 'Keep current IP logged in by continuous trying',
+    (yargs) => {
+      yargs
+        .positional('delay', {
+          describe: '<delay> Trying timeout (seconds)',
+          type: 'int',
+          default: 30,
+        });
+    },
+    (argv) => {
+      const config = readConfig(argv);
+      const ck = checkConfig(config);
+      if (ck) {
+        console.error(ck);
+        return;
+      }
+      const delay = argv.delay || 30;
+      tryLogin(config);
+      setInterval(() => tryLogin(config), delay * 1000);
+    })
   .help()
   .parse;
