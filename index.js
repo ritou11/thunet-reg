@@ -26,7 +26,7 @@ const checkConfig = (config) => {
 };
 
 const tryLogin = (config) => {
-  if (config.ip) {
+  if (!config.ip) {
     thunetReg.login(config.username, config.md5Password).then(
       ({ data }) => { console.log(data); },
     ).catch(() => {
@@ -44,15 +44,12 @@ const tryLogin = (config) => {
 };
 
 const tryAuth = (config) => {
-  thunetReg.login(config.username, config.md5Password).then(
+  thunetReg.auth4(config.username, config.password, config.ip).then(
     ({ data }) => { console.log(data); },
   ).catch(() => {
     console.log('Network error! Try again...');
-    setTimeout(() => tryLogin(config), 1000);
+    setTimeout(() => tryAuth(config), 1000);
   });
-  thunetReg.auth4(config.username, config.password, config.ip).then(
-    ({ data }) => { console.log(data); },
-  );
 };
 
 module.exports = yargRoot
