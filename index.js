@@ -45,7 +45,17 @@ const tryLogin = (config) => {
 
 const tryAuth = (config) => {
   thunetReg.auth4(config.username, config.password, config.ip).then(
-    ({ data }) => { console.log(data); },
+    ({ data }) => {
+      if (data && data.error) {
+        if (data.error === 'ok') {
+          console.log('Auth Successfully!');
+        } else {
+          console.log(data.error);
+        }
+      } else {
+        console.log(data);
+      }
+    },
   ).catch(() => {
     console.log('Network error! Try again...');
     setTimeout(() => tryAuth(config), 1000);

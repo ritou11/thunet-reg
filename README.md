@@ -46,9 +46,7 @@ Options:
 
 ## TODO
 
-1. auth信息输出美化
-2. auth修复ac_id
-3. keepauth
+1. keepauth
 
 ## 协议
 
