@@ -3,8 +3,8 @@ const os = require('os');
 const path = require('path');
 const fs = require('fs');
 const yargRoot = require('yargs');
-const { getMd5 } = require('./utils.js');
-const ThunetReg = require('./reg');
+const { getMd5 } = require('./lib/utils.js');
+const ThunetReg = require('./lib/reg');
 
 const thunetReg = new ThunetReg(1000);
 
