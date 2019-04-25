@@ -74,11 +74,6 @@ module.exports = yargRoot
     describe: 'MD5 password of your Tsinghua account.',
     type: 'string',
   })
-  .option('n', {
-    alias: 'net',
-    describe: 'Network of your computer, e.g. en0, eth0, ...',
-    type: 'string',
-  })
   .command('login [<ip>]', 'Login my current IP',
     (yargs) => {
       yargs
