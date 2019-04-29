@@ -28,12 +28,14 @@
   ```
   thunet-reg [command]
 Commands:
-  thunet-reg.js login [<ip>]         Login my current IP
-  thunet-reg.js logout               Logout my current IP
-  thunet-reg.js auth [<ip>]          Register [current] IP with auth4
-  thunet-reg.js unauth [<ip>]        Unregister [current] IP with auth4
-  thunet-reg.js keeplogin [<delay>]  Keep current IP logged in by continuous
-                                     trying
+  thunet-reg login [<ip>]         Login my current IP
+  thunet-reg logout               Logout my current IP
+  thunet-reg auth [<ip>]          Register [current] IP with auth4
+  thunet-reg unauth [<ip>]        Unregister [current] IP with auth4
+  thunet-reg keeplogin [<delay>]  Keep current IP logged in by continuous
+                                  trying
+  thunet-reg keepauth [<delay>]   Keep current IP logged in by continuous
+                                  trying
 Options:
   --version           Show version number                              [boolean]
   -c, --config-file   Json file that contains username, md5_password and other
