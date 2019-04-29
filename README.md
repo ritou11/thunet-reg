@@ -1,4 +1,4 @@
-# 清华校园网定时连接工具
+# 清华校园网自动认证工具
 
 [![npm](https://img.shields.io/npm/v/@ritou11/thunet-reg.svg?style=flat-square)](https://www.npmjs.com/package/@ritou11/thunet-reg)
 [![npm](https://img.shields.io/npm/dt/@ritou11/thunet-reg.svg?style=flat-square)](https://www.npmjs.com/package/@ritou11/thunet-reg)
@@ -6,12 +6,13 @@
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ritou11/thunet-reg.svg?style=flat-square)](https://github.com/ritou11/thunet-reg)
 [![license](https://img.shields.io/github/license/ritou11/thunet-reg.svg?style=flat-square)](https://github.com/ritou11/thunet-reg/blob/master/LICENSE.md)
 
-Author: Nogeek
-Email: ritou11@gmail.com
+> Author: Nogeek
+>
+> Email: ritou11@gmail.com
 
 ## 使用方法
 
-1. ```yarn global add @ritou11/thunet-reg```
+1. ```yarn global add @ritou11/thunet-reg``` or ```npm i -g @ritou11/thunet-reg```
 2. 默认配置文件 ```~/.thunet-reg```，格式如下：```<说明 | 默认值> [可选]```
 
    ```
@@ -43,10 +44,6 @@ Options:
   -m, --md5-password  MD5 password of your Tsinghua account.            [string]
   --help              Show help                                        [boolean]
   ```
-
-## TODO
-
-1. keepauth
 
 ## 协议
 

@@ -152,7 +152,7 @@ module.exports = yargRoot
     (yargs) => {
       yargs
         .positional('delay', {
-          describe: '<delay> Trying timeout (seconds)',
+          describe: '<delay> Trying interval (seconds)',
           type: 'int',
           default: 30,
         });
@@ -167,6 +167,26 @@ module.exports = yargRoot
       const delay = argv.delay || 30;
       tryLogin(config);
       setInterval(() => tryLogin(config), delay * 1000);
+    })
+  .command('keepauth [<delay>]', 'Keep current IP logged in by continuous trying',
+    (yargs) => {
+      yargs
+        .positional('delay', {
+          describe: '<delay> Trying interval (seconds)',
+          type: 'int',
+          default: 30,
+        });
+    },
+    (argv) => {
+      const config = readConfig(argv);
+      const ck = checkConfig(config);
+      if (ck) {
+        console.error(ck);
+        return;
+      }
+      const delay = argv.delay || 30;
+      tryAuth(config);
+      setInterval(() => tryAuth(config), delay * 1000);
     })
   .help()
   .parse;
