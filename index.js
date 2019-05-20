@@ -3,7 +3,7 @@ const os = require('os');
 const path = require('path');
 const fs = require('fs');
 const yargRoot = require('yargs');
-const { getMd5 } = require('./lib/utils.js');
+const { getMd5, getIp } = require('./lib/utils.js');
 const ThunetReg = require('./lib/reg');
 
 const thunetReg = new ThunetReg(1000);
@@ -46,12 +46,8 @@ const tryLogin = (config) => {
 const tryAuth = (config) => {
   thunetReg.auth4(config.username, config.password, config.ip).then(
     ({ data }) => {
-      if (data && data.error) {
-        if (data.error === 'ok') {
-          console.log('Auth Successfully!');
-        } else {
-          console.log(data.error);
-        }
+      if (data && data.error === 'ok') {
+        console.log('Auth Successfully!');
       } else {
         console.log(data);
       }
@@ -187,6 +183,22 @@ module.exports = yargRoot
       const delay = argv.delay || 30;
       tryAuth(config);
       setInterval(() => tryAuth(config), delay * 1000);
+    })
+  .command('ip [<v>]', 'Get current IP',
+    (yargs) => {
+      yargs
+        .positional('v', {
+          describe: '<v4|v6|all> IPv4 or IPv6',
+          type: 'string',
+        })
+        .option('i', {
+          alias: 'ifname',
+          describe: 'Name of network interface.',
+          type: 'string',
+        });
+    },
+    (argv) => {
+      console.log(getIp(argv.ifname, argv.v));
     })
   .help()
   .parse;
